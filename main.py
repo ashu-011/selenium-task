@@ -20,13 +20,14 @@ driver.find_element_by_link_text("Advanced search").click()
 assert "https://github.com/search/advanced?q=react&type=Repositories" in driver.current_url , "landed on wrong URL"
 
 # Using Select class to handle dropdown
-
 dropdown=Select(driver.find_element_by_id("search_language"))
 dropdown.select_by_visible_text("JavaScript")
 #stars: >45;
-#driver.find_element_by_id("search_stars").send_keys(">45")
+driver.find_element_by_id("search_stars").send_keys(">45")
+
 #followers: > 50;
-#driver.find_element_by_id("search_followers").send_keys(">50")
+driver.find_element_by_id("search_followers").send_keys(">50")
+
 #license : Boost Software License 1.0
 driver.find_element_by_id("search_license").send_keys("Boost Software License 1.0")
 #hit submit button
@@ -38,10 +39,10 @@ print("Verifying correct number of repository shown")
 #verifying Repository name
 repo_list=driver.find_element_by_css_selector(".repo-list-item")
 print(repo_list)
-# for repo in repo_list:
-#     if "mvoloskov/decider" in repo.text:
-#         print("Correct Repository name found")
-#         break
+ for repo in repo_list:
+     if "mvoloskov/decider" in repo.text:
+         print("Correct Repository name found")
+         break
 driver.find_element_by_link_text("mvoloskov/decider").click()
 
 
