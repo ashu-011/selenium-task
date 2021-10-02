@@ -35,7 +35,7 @@ driver.find_element_by_xpath('//button[contains(@class,"flex-auto btn")]').click
 respository_result=(driver.find_element_by_xpath('//div[contains(@class,"pb-3")]').text)
 print("Repository result shown : {}".format(respository_result))
 print("Verifying correct number of repository shown")
-#assert "1 repository result" in respository_result , "Incorrect number of repository result showing up"
+assert "1 repository result" in respository_result , "Incorrect number of repository result showing up"
 #verifying Repository name
 repo_list=driver.find_element_by_css_selector(".repo-list-item")
 print(repo_list)
