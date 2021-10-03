@@ -37,12 +37,12 @@ print("Repository result shown : {}".format(respository_result))
 print("Verifying correct number of repository shown")
 assert "1 repository result" in respository_result , "Incorrect number of repository result showing up"
 #verifying Repository name
-repo_list=driver.find_element_by_css_selector(".repo-list-item")
+repo_list=driver.find_elements_by_css_selector(".repo-list-item")
 print(repo_list)
- for repo in repo_list:
-     if "mvoloskov/decider" in repo.text:
-         print("Correct Repository name found")
-         break
+for repo in repo_list:
+    if "mvoloskov/decider" in repo.text:
+        print("Correct Repository name found")
+        break
 driver.find_element_by_link_text("mvoloskov/decider").click()
 url="https://raw.githubusercontent.com/mvoloskov/decider/master/README.md"
 file = urllib.request.urlopen(url)
