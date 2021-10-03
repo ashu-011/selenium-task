@@ -1,5 +1,5 @@
 import logging
-
+import urllib.request
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 
@@ -44,5 +44,7 @@ print(repo_list)
          print("Correct Repository name found")
          break
 driver.find_element_by_link_text("mvoloskov/decider").click()
-
+url="https://raw.githubusercontent.com/mvoloskov/decider/master/README.md"
+file = urllib.request.urlopen(url)
+print(file.read(300))
 
