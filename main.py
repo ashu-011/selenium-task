@@ -19,7 +19,7 @@ print("correct URL displayed is {}".format(driver.current_url))
 driver.find_element_by_link_text("Advanced search").click()
 assert "https://github.com/search/advanced?q=react&type=Repositories" in driver.current_url , "landed on wrong URL"
 
-# Using Select class to handle dropdown
+# Using Select class to handle dropdown on the page
 dropdown=Select(driver.find_element_by_id("search_language"))
 dropdown.select_by_visible_text("JavaScript")
 #stars: >45;
