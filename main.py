@@ -15,11 +15,11 @@ driver.find_element_by_id("not-found-search").send_keys("react")
 driver.find_element_by_css_selector('button[class="btn"]').click()
 #verifying current URL matches post search
 assert "https://github.com/search?q=react" in driver.current_url , "search operation failed as current URl doesn't match"
-print("correct URL displayed {}".format(driver.current_url))
+print("correct URL displayed is {}".format(driver.current_url))
 driver.find_element_by_link_text("Advanced search").click()
 assert "https://github.com/search/advanced?q=react&type=Repositories" in driver.current_url , "landed on wrong URL"
 
-# Using Select class to handle dropdown
+# Using Select class to handle dropdown on page
 dropdown=Select(driver.find_element_by_id("search_language"))
 dropdown.select_by_visible_text("JavaScript")
 #stars: >45;
