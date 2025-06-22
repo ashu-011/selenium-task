@@ -41,10 +41,9 @@ assert "1 repository result" in respository_result , "Incorrect number of reposi
 #verifying Repository name
 repo_list=driver.find_elements_by_css_selector(".repo-list-item")
 print(repo_list)
-for repo in repo_list:
-    if "mvoloskov/decider" in repo.text:
-        print("Correct Repository name found")
-        break
+target_repo_found = any("mvoloskov/decider" in repo.text for repo in repo_list)
+assert target_repo_found, "Target repository 'mvoloskov/decider' not found in search results"
+print("Correct Repository name found")
 driver.find_element_by_link_text("mvoloskov/decider").click()
 url="https://raw.githubusercontent.com/mvoloskov/decider/master/README.md"
 file = urllib.request.urlopen(url)
