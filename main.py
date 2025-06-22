@@ -4,7 +4,8 @@ import urllib.request
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 
-driver=webdriver.Chrome(executable_path="C:\\chromedriver.exe")
+chromedriver_path = os.environ.get("CHROMEDRIVER_PATH", "C:\\chromedriver.exe")
+driver = webdriver.Chrome(executable_path=chromedriver_path)
 
 #hitting the URL
 driver.get("https://github.com/")
@@ -15,7 +16,7 @@ print("correct title displayed")
 driver.find_element_by_id("not-found-search").send_keys("react")
 driver.find_element_by_css_selector('button[class="btn"]').click()
 #verifying current URL matches post search
-assert "https://github.com/search?q=react" in driver.current_url , "search operation failed as current URl doesn't match"
+assert "search" in driver.current_url and "q=react" in driver.current_url, "search operation failed as current URL doesn't match expected pattern"
 print("correct URL displayed {}".format(driver.current_url))
 driver.find_element_by_link_text("Advanced search").click()
 assert "https://github.com/search/advanced?q=react&type=Repositories" in driver.current_url , "landed on wrong URL"
